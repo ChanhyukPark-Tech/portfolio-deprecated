@@ -4,8 +4,7 @@ pipeline {
         stage("Build") {
             steps {
                 dir(client){
-                    sh "sudo npm install"
-                    sh "sudo npm run build"
+                    sh 'ls -al'
                 }        
             }
         }
