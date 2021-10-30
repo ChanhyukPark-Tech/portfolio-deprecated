@@ -1,20 +1,18 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('prepare') {
+     agent any
+     stages {
+        stage("Build") {
             steps {
-                echo 'prepare'
+                dir(client){
+                    sh "sudo npm install"
+                    sh "sudo npm run build"
+                }        
             }
         }
-        stage('build') {
+        stage("Deploy") {
             steps {
-                echo 'build'
-            }
-        }
-        stage('deploy') {
-            steps {
-                echo 'deploy'   
+                sh "sudo rm -rf /home/ubuntu/client/deploy"
+                sh "sudo cp -r ${WORKSPACE}/build/ /home/ubuntu/client/deploy"
             }
         }
     }
