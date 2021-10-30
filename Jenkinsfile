@@ -3,7 +3,7 @@ pipeline {
      stages {
         stage("Build") {
             steps {
-                dir(client){
+                dir('client'){
                     sh 'ls -al'
                 }        
             }
