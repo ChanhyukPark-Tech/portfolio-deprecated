@@ -12,8 +12,8 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "rm -rf /home/ubuntu/client/deploy"
-                sh "cp -r ${WORKSPACE}/build/ /home/ubuntu/client/deploy"
+                sh "rm -rf /var/www/jenkins-react-app"
+                sh "cp -r ${WORKSPACE}/build/ /var/www/jenkins-react-app/"
             }
         }
     }
