@@ -2,7 +2,7 @@ pipeline {
      agent any
      stages {
         stage("Build") {
-            steps {
+            steps { 
                 dir('client'){
                     sh 'ls -al'
                 }        
