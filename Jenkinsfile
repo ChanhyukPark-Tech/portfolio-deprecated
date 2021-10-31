@@ -2,11 +2,10 @@ pipeline {
      agent any
      stages {
         stage("Build") {
-            steps { 
-                dir('client'){
-                    sh 'ls -al'
-                    sh "npm install"
-                }        
+            steps {
+                dir('client')
+                sh "sudo npm install"
+                sh "sudo npm run build"
             }
         }
         stage("Deploy") {
