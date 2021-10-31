@@ -15,8 +15,6 @@
   "author": "Chanhyuk Park",
   "license": "ISC",
   "dependencies": {
-    "@react-three/drei": "^7.3.1",
-    "@react-three/fiber": "^7.0.6",
     "body-parse": "^0.1.0",
     "body-parser": "^1.19.0",
     "concurrently": "^6.2.0",
