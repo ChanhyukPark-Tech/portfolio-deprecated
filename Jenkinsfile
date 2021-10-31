@@ -5,6 +5,7 @@ pipeline {
             steps { 
                 dir('client'){
                     sh 'ls -al'
+                    sh "npm install"
                 }        
             }
         }
