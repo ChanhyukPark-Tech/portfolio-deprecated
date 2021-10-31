@@ -24,7 +24,7 @@ function HomePage(props) {
             <div className="typography">
                 <h1>Hi, I'm <Typical
                     steps={[
-                        'Chanhyuk Park', 2000, '박찬혁 입니다.', 2000
+                        'Dhanhyuk Park', 2000, '박찬혁 입니다.', 2000
                     ]}
                     loop={Infinity}
                     wrapper="span"
