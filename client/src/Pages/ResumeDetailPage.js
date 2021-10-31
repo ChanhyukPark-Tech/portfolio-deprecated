@@ -21,7 +21,7 @@ function ResumeDetailPage(props) {
             }
         }
         getWorkingExperienceImages();
-    },[])
+    },[params.title])
 //Hook to grab window size
     const size = useWindowSize();
 
@@ -40,7 +40,7 @@ function ResumeDetailPage(props) {
     // Run scrollrender once page is loaded.
     useEffect(() => {
         requestAnimationFrame(() => skewScrolling());
-    }, []);
+    });
 
 
     // set the height of the body.
@@ -49,7 +49,7 @@ function ResumeDetailPage(props) {
         return ()=>{
             document.body.style.height = `${size.height}px`
         }
-    }, [size.height, scrollContainer, scrollContainer.current,images]);
+    }, [size.height, scrollContainer, images]);
 
     //Set the height of the body to the height of the scrolling div
     const setBodyHeight = () => {

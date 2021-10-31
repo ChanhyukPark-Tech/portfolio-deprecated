@@ -39,11 +39,11 @@ function HomePage(props) {
                 <div className="icons" onMouseEnter={() => cursorChangeHandler("hovered")}
                      onMouseLeave={() => cursorChangeHandler("")}>
                     <a onClick={() => window.open('https://github.com/ChanhyukPark-Tech', '_blank')}
-                       className="icon i-github">
+                       className="icon i-github" href='#!'>
                         <GithubIcon/>
                     </a>
                     <a onClick={() => window.open('https://chanhyukpark-tech.github.io/', '_blank')}
-                       className="icon i-chromeReaderModeIcon">
+                       className="icon i-chromeReaderModeIcon" href='#!'>
                         <ChromeReaderModeIcon/>
                     </a>
                     {/*<a onClick={() => window.open('https://www.instagram.com/yokattadesune/', '_blank')}*/}
