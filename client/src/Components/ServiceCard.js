@@ -36,7 +36,7 @@ export const ServiceCardStyled = styled.div`
                 width: 4rem;
                 background-color: var(--border-color);
                 height: 3px;
-                position: absolute;;
+                position: absolute;
                 left: 0;
                 bottom: 0;
                 border-radius: 10px;

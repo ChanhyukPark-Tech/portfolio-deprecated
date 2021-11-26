@@ -7,7 +7,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import SchoolIcon from '@material-ui/icons/School';
 import ResumeItem from '../Components/ResumeItem';
 import CardMembershipIcon from '@material-ui/icons/CardMembership';
-import {ServicesSectionStyled} from "./ServicesSection";
+import {OpenSourceSectionStyled, ServicesSectionStyled} from "./ServicesSection";
 import CertificationCard from "./CertificationCard";
 import CheckIcon from '@material-ui/icons/Check';
 import axios from "axios";
@@ -18,10 +18,8 @@ function Resume() {
     const school = <SchoolIcon/>
     const certification = <CardMembershipIcon/>
     const check = <CheckIcon/>
-    const workingExperienceRef = useRef();
-    const educationExperienceRef = useRef();
-    const certificationRef = useRef();
     const [certifications, setCertifications] = useState([]);
+    const [opensources, setOpensources] = useState([]);
     const [workingExperiences, setWorkingExperiences] = useState([]);
     const [educationExperiences, setEducationExperiences] = useState([]);
 
@@ -50,13 +48,19 @@ function Resume() {
         }
         getEducationExperiences();
     }, [])
-
-
+    useEffect(() => {
+        const getOpenSourceContributions = async () => {
+            const dbOpenSource = await axios.get('/api/resume/openSourceContribution')
+            console.log(dbOpenSource.data)
+            setOpensources(dbOpenSource.data)
+        }
+        getOpenSourceContributions();
+    }, [])
     return (
         <ResumeStyled>
             <Title title={'Resume'} span={'resume'}/>
             <InnerLayout>
-                <div className="small-title" ref={workingExperienceRef}>
+                <div className="small-title">
                     <SmallTitle icon={briefcase} title={'Working Experience'}/>
                     <SmallestTitle icon={check} title={'파란색 글자를 클릭하면 앨범으로 이동합니다'}/>
                 </div>
@@ -73,7 +77,7 @@ function Resume() {
                         ))
                     }
                 </div>
-                <div className="small-title u-small-title-margin" ref={educationExperienceRef}>
+                <div className="small-title u-small-title-margin" >
                     <SmallTitle icon={school} title={'Education Experience'}/>
                     <SmallestTitle icon={check} title={'파란색 글자를 클릭하면 앨범으로 이동합니다'}/>
 
@@ -93,7 +97,7 @@ function Resume() {
 
 
                 </div>
-                <div className="small-title u-small-title-margin" ref={certificationRef}>
+                <div className="small-title u-small-title-margin">
                     <SmallTitle icon={certification} title={'Certification'}/>
                 </div>
                 <ServicesSectionStyled>
@@ -110,6 +114,24 @@ function Resume() {
                         }
                     </div>
                 </ServicesSectionStyled>
+
+                <div className="small-title u-small-title-margin">
+                    <SmallTitle icon={certification} title={'Open Source Contribution'}/>
+                </div>
+                <OpenSourceSectionStyled>
+                    <div className="services">
+                        {
+                            opensources.map((opensource) => (
+                                <CertificationCard
+                                    key={opensource.opensource_id}
+                                    image={opensource.image}
+                                    title={opensource.title}
+                                    List={opensource.contents.split(",")}
+                                />
+                            ))
+                        }
+                    </div>
+                </OpenSourceSectionStyled>
             </InnerLayout>
         </ResumeStyled>
     )

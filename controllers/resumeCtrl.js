@@ -29,6 +29,20 @@ group by certifications.id`, (error, rows) => {
             res.send(rows);
         })
     },
+
+    getOpenSourceContribution: async (req, res) => {
+        connection.query(`SET SESSION group_concat_max_len = 1000000`)
+
+        connection.query(`select opensource.opensource_id,image,title, group_concat(opensource_content) contents from
+opensource  join opensource_list 
+on opensource.opensource_id = opensource_list.opensource_id
+group by opensource.opensource_id`, (error, rows) => {
+            if (error) throw error;
+            res.send(rows);
+        })
+    }
+
+    ,
     getWorkingExperienceImages: async (req, res) => {
         const {title} = req.body;
         const sql = `SELECT images FROM workingExperienceImages WHERE titleId = '${title}' `;

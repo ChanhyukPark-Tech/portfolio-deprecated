@@ -85,4 +85,24 @@ export const ServicesSectionStyled = styled.section`
 
   }
 `;
+
+
+export const OpenSourceSectionStyled = styled.section`
+  .services {
+    margin-top: 5rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+    }
+    @media screen and (max-width: 950px) {
+    }
+    @media screen and (max-width: 650px) {
+    }
+    .service-card{
+      opacity: 1;
+    }
+
+  }
+`;
 export default ServicesSection;
